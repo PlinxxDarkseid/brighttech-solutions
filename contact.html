@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Contact us | BrightTech Solutions</title>
-  <meta name="description" content="Call, email or visit BrightTech Solutions on Spintex Road, Accra, or send a message and we will reply within one working day.">
+  <meta name="description" content="Call, email or visit BrightTech Solutions in East Legon, Accra, or send a message and we will reply within one working day.">
   <meta name="theme-color" content="#fffaf6">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact us | BrightTech Solutions">
-  <meta property="og:description" content="Call, email or visit BrightTech Solutions on Spintex Road, Accra, or send a message and we will reply within one working day.">
+  <meta property="og:description" content="Call, email or visit BrightTech Solutions in East Legon, Accra, or send a message and we will reply within one working day.">
   <meta property="og:url" content="https://plinxxdarkseid.github.io/brighttech-solutions/contact.html">
   <meta property="og:image" content="https://plinxxdarkseid.github.io/brighttech-solutions/images/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -27,7 +27,7 @@
         <span class="brand-name">BrightTech <span>Solutions</span></span>
       </a>
 
-      <!-- The checkbox drives the mobile menu with CSS only (see "Mobile menu" in style.css) -->
+      <!-- Mobile menu: section 4 of style.css -->
       <input class="menu-toggle" type="checkbox" id="menu-toggle">
       <label class="menu-button" for="menu-toggle"><span class="menu-icon" aria-hidden="true"></span><span class="visually-hidden">Menu</span></label>
 
@@ -42,7 +42,7 @@
         </ul>
       </nav>
 
-      <a class="btn btn-ink header-call" href="tel:+233302901474">Call 030 290 1474</a>
+      <a class="btn btn-ink header-call" href="tel:+233547839203">Call 054 783 9203</a>
     </div>
   </header>
 
@@ -62,58 +62,65 @@
 
     <div class="section">
       <div class="wrap contact">
-        <form class="contact-form" id="contact-form" action="thanks.html" method="get">
-          <div class="form-row">
-            <div class="form-field">
-              <label for="name">Full name</label>
-              <input id="name" name="name" type="text" autocomplete="name" required minlength="2" placeholder="Ama Mensah">
-              <p class="field-error">Please tell us your name.</p>
+        <div class="contact-main">
+          <form class="contact-form" id="contact-form" action="thanks.html" method="get">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Full name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required minlength="2" placeholder="Ama Mensah">
+                <p class="field-error">Please tell us your name.</p>
+              </div>
+              <div class="form-field">
+                <label for="email">Email address</label>
+                <input id="email" name="email" type="email" autocomplete="email" required placeholder="ama@example.com">
+                <p class="field-error">Enter an email address like name@example.com.</p>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="phone">Phone number</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="[0-9+ ]{10,16}" placeholder="024 123 4567">
+                <p class="field-error">Enter a phone number of at least 10 digits.</p>
+              </div>
+              <div class="form-field">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" list="subject-ideas" required placeholder="Laptop repair">
+                <datalist id="subject-ideas">
+                  <option value="Buying a product"></option>
+                  <option value="Laptop or desktop repair"></option>
+                  <option value="Wi-Fi, cabling or CCTV"></option>
+                  <option value="Support plan"></option>
+                  <option value="Something else"></option>
+                </datalist>
+                <p class="field-error">Give your message a subject.</p>
+              </div>
             </div>
             <div class="form-field">
-              <label for="email">Email address</label>
-              <input id="email" name="email" type="email" autocomplete="email" required placeholder="ama@example.com">
-              <p class="field-error">Enter an email address like name@example.com.</p>
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required minlength="10"></textarea>
+              <p class="field-error">Tell us a little more (at least 10 characters).</p>
             </div>
+            <button class="btn btn-sun" type="submit">Send message</button>
+          </form>
+
+          <div class="map">
+            <iframe title="Map of East Legon, Accra" src="https://www.google.com/maps?q=East+Legon,+Accra,+Ghana&amp;output=embed" width="800" height="360" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
-          <div class="form-row">
-            <div class="form-field">
-              <label for="phone">Phone number</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="[0-9+ ]{10,16}" placeholder="024 123 4567">
-              <p class="field-error">Enter a phone number of at least 10 digits.</p>
-            </div>
-            <div class="form-field">
-              <label for="subject">Subject</label>
-              <input id="subject" name="subject" type="text" list="subject-ideas" required placeholder="Laptop repair">
-              <datalist id="subject-ideas">
-                <option value="Buying a product"></option>
-                <option value="Laptop or desktop repair"></option>
-                <option value="Wi-Fi, cabling or CCTV"></option>
-                <option value="Support plan"></option>
-                <option value="Something else"></option>
-              </datalist>
-              <p class="field-error">Give your message a subject.</p>
-            </div>
-          </div>
-          <div class="form-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="6" required minlength="10" placeholder="What happened, which device, and when is a good time to call you?"></textarea>
-            <p class="field-error">Tell us a little more (at least 10 characters).</p>
-          </div>
-          <button class="btn btn-sun" type="submit">Send message</button>
-        </form>
+        </div>
 
         <aside class="contact-side" aria-label="Contact details">
           <div class="contact-card">
             <h2>Visit or call</h2>
             <address>
               BrightTech Solutions Ltd<br>
-              Plot 14, Spintex Road<br>
+              East Legon<br>
               Accra, Ghana
             </address>
             <ul class="contact-links">
-              <li><span>Phone</span><a href="tel:+233302901474">+233 30 290 1474</a></li>
-              <li><span>Email</span><a href="mailto:hello@brighttech.com.gh">hello@brighttech.com.gh</a></li>
-              <li><span>Map</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Spintex+Road+Accra+Ghana" target="_blank" rel="noopener">Find us on Google Maps</a></li>
+              <li><span>Phone</span><a href="tel:+233547839203">+233 54 783 9203</a></li>
+              <li><span>WhatsApp</span><a href="https://wa.me/233547839203?text=Hello%20BrightTech" target="_blank" rel="noopener">054 783 9203</a></li>
+              <li><span>Email</span><a href="mailto:princedze@gmail.com">princedze@gmail.com</a></li>
+              <li><span>Map</span><a href="https://www.google.com/maps/search/?api=1&amp;query=East+Legon+Accra+Ghana" target="_blank" rel="noopener">Find us on Google Maps</a></li>
             </ul>
 
             <table class="hours">
@@ -127,9 +134,9 @@
           </div>
 
           <figure class="support-line">
-            <figcaption>Hear our support line</figcaption>
+            <figcaption>A word from our help desk</figcaption>
             <audio controls preload="none" src="media/support-line.mp3">
-              <a href="media/support-line.mp3">Download the support line greeting</a>
+              <a href="media/support-line.mp3">Download the help desk message</a>
             </audio>
           </figure>
 
@@ -161,7 +168,7 @@
           <img src="images/logo-light.svg" alt="BrightTech Solutions logo" width="36" height="36">
           <span class="brand-name">BrightTech <span>Solutions</span></span>
         </a>
-        <p>Computers, software, networking and IT support for Accra since 2014.</p>
+        <p>Computers, software, networking and IT support for Accra since 2023.</p>
       </div>
       <nav class="footer-nav" aria-label="Footer">
         <h2>Explore</h2>
@@ -176,15 +183,16 @@
       <div class="footer-contact">
         <h2>Reach us</h2>
         <ul>
-          <li><a href="tel:+233302901474">+233 30 290 1474</a></li>
-          <li><a href="mailto:hello@brighttech.com.gh">hello@brighttech.com.gh</a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Spintex+Road+Accra+Ghana" target="_blank" rel="noopener">Spintex Road, Accra</a></li>
+          <li><a href="tel:+233547839203">+233 54 783 9203</a></li>
+          <li><a href="https://wa.me/233547839203?text=Hello%20BrightTech" target="_blank" rel="noopener">WhatsApp 054 783 9203</a></li>
+          <li><a href="mailto:princedze@gmail.com">princedze@gmail.com</a></li>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=East+Legon+Accra+Ghana" target="_blank" rel="noopener">East Legon, Accra</a></li>
         </ul>
       </div>
     </div>
     <div class="wrap footer-base">
-      <p>© 2026 BrightTech Solutions. A fictional company created for a Web Technologies group project at Knutsford University.</p>
-      <p>Designed and built by Edze Prince Daniel, Anang Queenstar Atswei, Atta Bansah Defred and Caleb Apemenyor Tawiah, in HTML and CSS only. <a href="#main">Back to top</a></p>
+      <p>© 2026 BrightTech Solutions Ltd. All rights reserved.</p>
+      <p><a href="#main">Back to top</a></p>
     </div>
   </footer>
 </body>

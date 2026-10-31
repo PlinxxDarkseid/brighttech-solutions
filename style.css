@@ -1,7 +1,5 @@
 /* =========================================================
    BrightTech Solutions — style.css
-   HTML and CSS only: no JavaScript, no frameworks, no external files.
-   One stylesheet for every page of the site.
    Contents
      1. Fonts and colour tokens
      2. Base elements and browser surfaces
@@ -12,7 +10,7 @@
      7. About us
      8. Services, repair steps and support plans table
      9. Our team
-    10. Products and the CSS-only filter
+    10. Products and the filter
     11. The quote builder
     12. Contact form, details, audio and FAQ
     13. Thank-you and not-found pages
@@ -40,9 +38,7 @@
 }
 
 :root {
-  /* The brand: warm white paper and black ink, with orange kept as an accent.
-     Orange only ever fills small things. Large areas use the two soft tints,
-     because a whole screen of strong orange is tiring to look at. */
+  /* Paper and ink, with orange as an accent. Large areas use the soft tints. */
   --sun: #f06e1e;
   --sun-light: #ffdcc6;         /* soft tint: the half-sun, highlighted cards */
   --sun-wash: #fff1e6;          /* softest tint: bands and product tiles */
@@ -654,6 +650,10 @@ a {
   outline-color: var(--sun);
 }
 
+.section-lead + .facts {
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
 /* Four plain facts. In each pair the <dd> holds the number, so the column
    is reversed to put the number above its label. */
 .facts {
@@ -913,14 +913,6 @@ a {
   color: var(--muted);
 }
 
-.plans-hint {
-  display: none;
-  margin-top: 1rem;
-  color: var(--sun-text);
-  font-size: 0.9rem;
-  font-weight: 650;
-}
-
 .table-scroll {
   margin-top: 1.5rem;
   overflow-x: auto;
@@ -1043,13 +1035,13 @@ a {
 }
 
 
-/* ---------- 10. Products and the CSS-only filter ---------- */
+/* ---------- 10. Products and the filter ---------- */
 
 .filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 0;
+  margin: 0 0 1.75rem;
   padding: 0;
   border: 0;
 }
@@ -1098,11 +1090,6 @@ a {
 .catalogue:has(#filter-network:checked) .product:not(.cat-network),
 .catalogue:has(#filter-software:checked) .product:not(.cat-software) {
   display: none;
-}
-
-.catalogue-hint {
-  margin: 0.9rem 0 1.75rem;
-  color: var(--muted);
 }
 
 .product-grid {
@@ -1195,16 +1182,9 @@ a {
 
 
 /* ---------- 11. The quote builder ----------
-   Tick products and the total adds itself up, with no JavaScript.
-   Four steps, each one line of idea:
-     1. Each "Add to quote" button is the <label> of a hidden checkbox.
-     2. :has() notices a ticked box and sets a variable to that product's price.
-     3. calc() adds the eight variables together.
-     4. CSS can only print a number through a counter, so counter-reset loads
-        the total into two counters, thousands and the rest, to place the comma.
-   Every product costs at least GHS 1,000, so the comma is always in the right place.
-   :has() still sees a ticked box inside a product the filter has hidden,
-   so filtering the catalogue never changes the total. */
+   Each ticked box sets a variable to that product's price, calc() adds them,
+   and two counters print the total. Every product costs at least GHS 1,000,
+   so the comma is always in the right place. */
 
 .shop:has(#q-laptop:checked)    { --q-laptop: 9850; }
 .shop:has(#q-desktop:checked)   { --q-desktop: 7400; }
@@ -1406,9 +1386,28 @@ a {
   align-items: start;
 }
 
+.contact-main {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
 .contact-form {
   display: grid;
   gap: 1.15rem;
+}
+
+.map {
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--sun-wash);
+}
+
+.map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(260px, 30vw, 380px);
+  border: 0;
 }
 
 .form-row {
@@ -1683,12 +1682,6 @@ a {
   font-weight: 600;
 }
 
-.thanks-note {
-  margin-top: 2.5rem;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
 
 /* ---------- 14. Footer ---------- */
 
@@ -1767,8 +1760,7 @@ a {
    All of this is progressive enhancement: a browser that does not know
    these rules skips them, and the site still works exactly the same. */
 
-/* One CSS rule makes the pages fade into each other when you follow a link.
-   The header has its own name, so it stays still while the page changes. */
+/* Pages fade into each other; the header keeps its own name so it stays still */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition {
     navigation: auto;
@@ -1990,10 +1982,6 @@ a {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .plans-hint {
-    display: block;
   }
 }
 
