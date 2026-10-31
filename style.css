@@ -1667,6 +1667,14 @@ a {
   font-weight: 500;
 }
 
+.thanks-lead a {
+  white-space: nowrap;          /* keeps the phone number on one line */
+}
+
+.thanks-lead + .actions {
+  margin-top: 1.75rem;
+}
+
 .thanks-next {
   display: grid;
   gap: 0.6rem;
