@@ -5,7 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BrightTech Solutions | Computers, networks and IT support in Accra</title>
   <meta name="description" content="BrightTech Solutions sells, installs and repairs computers, software, networks and CCTV for offices, schools and shops across Accra, Ghana.">
-  <meta name="theme-color" content="#ff5b1a">
+  <meta name="theme-color" content="#fffaf6">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BrightTech Solutions | Computers, networks and IT support in Accra">
+  <meta property="og:description" content="BrightTech Solutions sells, installs and repairs computers, software, networks and CCTV for offices, schools and shops across Accra, Ghana.">
+  <meta property="og:url" content="https://plinxxdarkseid.github.io/brighttech-solutions/">
+  <meta property="og:image" content="https://plinxxdarkseid.github.io/brighttech-solutions/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,10 +19,10 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- ============ HEADER & NAVIGATION ============ -->
+  <!-- ============ HEADER & NAVIGATION (the same on every page) ============ -->
   <header class="site-header">
     <div class="wrap header-bar">
-      <a class="brand" href="#home">
+      <a class="brand" href="index.html">
         <img src="images/logo.svg" alt="BrightTech Solutions logo" width="36" height="36">
         <span class="brand-name">BrightTech <span>Solutions</span></span>
       </a>
@@ -27,12 +33,12 @@
 
       <nav class="site-nav" aria-label="Main">
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
 
@@ -42,41 +48,41 @@
 
   <main id="main">
 
-    <!-- ============ 1. HOME ============ -->
-    <section class="hero field" id="home">
+    <!-- ============ WELCOME ============ -->
+    <section class="hero">
       <div class="wrap">
         <div class="hero-top">
           <h1>Computers that work. Networks that stay up.</h1>
           <div class="hero-intro">
             <p class="hero-lead"><strong>Welcome to BrightTech Solutions.</strong> We sell, install and repair the computers, software and networks behind Accra's offices, schools and shops, and we pick up the phone when something stops working.</p>
             <div class="actions">
-              <a class="btn btn-ink" href="#contact">Book a technician</a>
-              <a class="btn btn-line" href="#products">Browse products</a>
+              <a class="btn btn-ink" href="contact.html">Book a technician</a>
+              <a class="btn btn-line" href="products.html">Browse products</a>
             </div>
           </div>
         </div>
 
         <ul class="shelf" aria-label="Popular products">
           <li class="shelf-item">
-            <a href="#products">
+            <a href="products.html">
               <img src="images/products/laptop.svg" alt="Business laptop" width="320" height="240">
               <span class="price-tag">Business Laptop 14" <b>GHS 9,850</b></span>
             </a>
           </li>
           <li class="shelf-item">
-            <a href="#products">
+            <a href="products.html">
               <img src="images/products/printer.svg" alt="Laser printer" width="320" height="240">
               <span class="price-tag">Laser Printer <b>GHS 3,600</b></span>
             </a>
           </li>
           <li class="shelf-item">
-            <a href="#products">
+            <a href="products.html">
               <img src="images/products/router.svg" alt="Wi-Fi 6 router" width="320" height="240">
               <span class="price-tag">Wi-Fi 6 Router <b>GHS 1,250</b></span>
             </a>
           </li>
           <li class="shelf-item">
-            <a href="#products">
+            <a href="products.html">
               <img src="images/products/ups.svg" alt="1500VA UPS power backup" width="320" height="240">
               <span class="price-tag">1500VA UPS <b>GHS 2,450</b></span>
             </a>
@@ -93,37 +99,45 @@
       </ul>
     </div>
 
-    <!-- ============ 2. ABOUT US ============ -->
-    <section class="section" id="about">
-      <div class="wrap about">
-        <div class="about-story">
-          <h2>Twelve years of keeping Accra working.</h2>
-          <p>BrightTech Solutions started in 2014 as a two-desk laptop repair counter near Kwame Nkrumah Circle. Customers kept asking the same question: if you can fix it, can you also supply it, set it up and connect it to everything else? So we learned to.</p>
-          <p>Today we are a team of technicians, network engineers and support staff working from our showroom and workshop on Spintex Road. We look after offices, schools, clinics, churches and shops across Greater Accra, and we still repair laptops at the front counter.</p>
-        </div>
-
-        <div class="about-history">
-          <h3>Our history</h3>
-          <ol class="timeline">
-            <li><span class="year">2014</span> Opened a two-desk laptop repair counter near Kwame Nkrumah Circle.</li>
-            <li><span class="year">2016</span> Started supplying new laptops, desktops and printers to small businesses.</li>
-            <li><span class="year">2018</span> Built our first full office network and CCTV system, for a school in Tema.</li>
-            <li><span class="year">2021</span> Moved into our own showroom and workshop on Spintex Road.</li>
-            <li><span class="year">2024</span> Launched the help desk and monthly support plans.</li>
-            <li><span class="year">2026</span> Looking after more than 300 offices, schools and shops in Greater Accra.</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="wrap mission-vision">
-        <article class="statement statement-ink">
-          <h3>Our mission</h3>
-          <p>To give every business we serve technology that works, and a team that answers when it doesn't.</p>
-        </article>
-        <article class="statement statement-sun">
-          <h3>Our vision</h3>
-          <p>To be the first IT partner Ghanaian businesses call, from the first laptop to the last network cable.</p>
-        </article>
+    <!-- ============ WHAT WE DO ============ -->
+    <section class="section" aria-labelledby="what-we-do">
+      <div class="wrap">
+        <h2 class="section-title" id="what-we-do">One company for all of it.</h2>
+        <p class="section-lead">Most of our customers start with one of these and end up using all four. One phone number, and one person who already knows your setup.</p>
+        <ul class="home-links">
+          <li>
+            <a href="services.html#hardware">
+              <span class="service-icon"><img src="images/icons/hardware.svg" alt="" width="64" height="64"></span>
+              <h3>Hardware supply &amp; repair</h3>
+              <p>New equipment, supplied and set up, and repairs for what you already own.</p>
+              <span class="more">See what's included</span>
+            </a>
+          </li>
+          <li>
+            <a href="services.html#software">
+              <span class="service-icon"><img src="images/icons/software.svg" alt="" width="64" height="64"></span>
+              <h3>Software &amp; licensing</h3>
+              <p>Genuine licences, installed properly, with your staff trained to use them.</p>
+              <span class="more">See what's included</span>
+            </a>
+          </li>
+          <li>
+            <a href="services.html#networking">
+              <span class="service-icon"><img src="images/icons/networking.svg" alt="" width="64" height="64"></span>
+              <h3>Networking &amp; CCTV</h3>
+              <p>Wi-Fi that reaches every room, tidy cabling and cameras you can check from your phone.</p>
+              <span class="more">See what's included</span>
+            </a>
+          </li>
+          <li>
+            <a href="services.html#support">
+              <span class="service-icon"><img src="images/icons/support.svg" alt="" width="64" height="64"></span>
+              <h3>IT support &amp; maintenance</h3>
+              <p>A help desk that answers, and engineers who come out.</p>
+              <span class="more">See what's included</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -142,341 +156,38 @@
       </div>
     </section>
 
-    <!-- ============ 3. SERVICES ============ -->
-    <section class="section" id="services">
+    <!-- ============ FACTS ============ -->
+    <section class="section" aria-label="BrightTech in numbers">
       <div class="wrap">
-        <h2 class="section-title">One team, from the box to the breakdown.</h2>
-        <p class="section-lead">Most of our customers start with one of these and end up using all four. That is the point: one company, one phone number, one person who already knows your setup.</p>
-
-        <div class="services">
-          <article class="service">
-            <span class="service-icon"><img src="images/icons/hardware.svg" alt="" width="64" height="64"></span>
-            <h3>Hardware supply &amp; repair</h3>
-            <p>New equipment, supplied and set up, and repairs for the equipment you already own, whoever sold it to you.</p>
-            <ul>
-              <li>Laptops, desktops and printers</li>
-              <li>Diagnosis and repair of any brand</li>
-              <li>Memory and SSD upgrades</li>
-              <li>UPS and power backup</li>
-            </ul>
-          </article>
-          <article class="service">
-            <span class="service-icon"><img src="images/icons/software.svg" alt="" width="64" height="64"></span>
-            <h3>Software &amp; licensing</h3>
-            <p>Genuine licences, installed properly, with your staff trained so the new system actually gets used.</p>
-            <ul>
-              <li>Windows and Microsoft 365 setup</li>
-              <li>Accounting and business software</li>
-              <li>Antivirus and automatic backups</li>
-              <li>Staff training on site</li>
-            </ul>
-          </article>
-          <article class="service">
-            <span class="service-icon"><img src="images/icons/networking.svg" alt="" width="64" height="64"></span>
-            <h3>Networking &amp; CCTV</h3>
-            <p>Wi-Fi that reaches every room, cabling that is labelled and tidy, and cameras you can check from your phone.</p>
-            <ul>
-              <li>Structured cabling and network cabinets</li>
-              <li>Office and campus Wi-Fi</li>
-              <li>Routers, switches and firewalls</li>
-              <li>CCTV with remote viewing</li>
-            </ul>
-          </article>
-          <article class="service">
-            <span class="service-icon"><img src="images/icons/support.svg" alt="" width="64" height="64"></span>
-            <h3>IT support &amp; maintenance</h3>
-            <p>A help desk that answers, engineers who come out, and regular check-ups so small problems stay small.</p>
-            <ul>
-              <li>Help desk by phone and WhatsApp</li>
-              <li>On-site visits across Accra</li>
-              <li>Preventive maintenance checks</li>
-              <li>Data recovery</li>
-            </ul>
-          </article>
-        </div>
-
-        <div class="repair">
-          <h3>How a repair works</h3>
-          <ol class="steps">
-            <li><strong>Call or drop it off.</strong> Ring the help desk or bring the device to Spintex Road.</li>
-            <li><strong>We diagnose it.</strong> Within one working day, free if you go ahead with the repair.</li>
-            <li><strong>You approve the quote.</strong> A fixed price by SMS or email. No surprises.</li>
-            <li><strong>We fix and test it.</strong> Every repair carries a 90-day guarantee.</li>
-            <li><strong>Collect or we deliver.</strong> Free delivery anywhere in Greater Accra.</li>
-          </ol>
-        </div>
-
-        <div class="plans">
-          <div class="plans-head">
-            <h3>Support plans</h3>
-            <p>A fixed monthly fee for businesses that cannot afford to stop. Cancel any time with a month's notice.</p>
-          </div>
-          <p class="plans-hint">Swipe the table sideways to compare all three plans.</p>
-          <div class="table-scroll" tabindex="0" role="region" aria-label="Support plans comparison">
-            <table class="plans-table">
-              <caption class="visually-hidden">BrightTech support plans compared</caption>
-              <thead>
-                <tr>
-                  <th scope="col">What you get</th>
-                  <th scope="col">Starter</th>
-                  <th scope="col" class="is-popular">Business <span>Most chosen</span></th>
-                  <th scope="col">Complete</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Monthly price</th><td class="num">GHS 450</td><td class="num is-popular">GHS 1,200</td><td class="num">GHS 2,800</td></tr>
-                <tr><th scope="row">Devices covered</th><td>Up to 5</td><td class="is-popular">Up to 20</td><td>Up to 60</td></tr>
-                <tr><th scope="row">Help desk hours</th><td>Mon–Fri, 8:00–17:00</td><td class="is-popular">Mon–Sat, 8:00–18:00</td><td>Every day, 7:00–22:00</td></tr>
-                <tr><th scope="row">On-site visits</th><td>Pay per visit</td><td class="is-popular">2 a month</td><td>Unlimited</td></tr>
-                <tr><th scope="row">Response time in Accra</th><td>Next working day</td><td class="is-popular">Same day</td><td>Within 2 hours</td></tr>
-                <tr><th scope="row">Maintenance check</th><td>Every 6 months</td><td class="is-popular">Every 3 months</td><td>Every month</td></tr>
-                <tr><th scope="row">Off-site backup</th><td><span aria-hidden="true">—</span><span class="visually-hidden">Not included</span></td><td class="is-popular">100 GB</td><td>1 TB</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        <dl class="facts">
+          <div class="fact"><dt>years keeping Accra working</dt><dd>12</dd></div>
+          <div class="fact"><dt>offices, schools and shops looked after</dt><dd>300+</dd></div>
+          <div class="fact"><dt>day guarantee on every repair</dt><dd>90</dd></div>
+          <div class="fact"><dt>month warranty on every product</dt><dd>12</dd></div>
+        </dl>
       </div>
     </section>
 
-    <!-- ============ 4. OUR TEAM ============ -->
-    <section class="section field" id="team">
-      <div class="wrap">
-        <h2 class="section-title">The people who pick up the phone.</h2>
-        <p class="section-lead">Call BrightTech and you reach one of us, not a call centre. Here is who you will be talking to.</p>
-
-        <div class="team">
-          <article class="member">
-            <img src="images/team/member-1.svg" alt="Portrait of Kwame Mensah" width="400" height="480" loading="lazy">
-            <h3>Kwame Mensah</h3>
-            <p class="role">Managing Director</p>
-            <p>Kwame leads the company and looks after our biggest customers, from schools to hotel groups, and is still the first to pick up a screwdriver when the workshop is busy.</p>
-          </article>
-          <article class="member">
-            <img src="images/team/member-2.svg" alt="Portrait of Ama Owusu" width="400" height="480" loading="lazy">
-            <h3>Ama Owusu</h3>
-            <p class="role">Head of Networking &amp; Security</p>
-            <p>Ama designs the cabling, Wi-Fi and CCTV for every site we take on, and signs off an installation only after testing the signal in every room.</p>
-          </article>
-          <article class="member">
-            <img src="images/team/member-3.svg" alt="Portrait of Yaw Boateng" width="400" height="480" loading="lazy">
-            <h3>Yaw Boateng</h3>
-            <p class="role">Lead Software Engineer</p>
-            <p>Yaw runs Windows and Microsoft 365 rollouts, accounting software and backups, and trains each customer's staff until the new system feels ordinary.</p>
-          </article>
-          <article class="member">
-            <img src="images/team/member-4.svg" alt="Portrait of Efua Asante" width="400" height="480" loading="lazy">
-            <h3>Efua Asante</h3>
-            <p class="role">Customer Support Manager</p>
-            <p>Efua runs the help desk and the support plans. Call 030 290 1474 and there is a good chance Efua answers, and a better chance it gets solved on that call.</p>
-          </article>
+    <!-- ============ CLOSING CALL TO ACTION ============ -->
+    <section class="cta" aria-labelledby="cta-title">
+      <div class="wrap cta-inner">
+        <div>
+          <h2 id="cta-title">Something stopped working?</h2>
+          <p>Ring the help desk, or tell us what happened and we will reply within one working day.</p>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 5. PRODUCTS ============ -->
-    <section class="section" id="products">
-      <div class="wrap">
-        <h2 class="section-title">In the showroom.</h2>
-        <p class="section-lead">Every price includes delivery and setup anywhere in Greater Accra, and a 12-month BrightTech warranty. Prices in Ghana cedis, VAT included.</p>
-
-        <div class="catalogue">
-          <!-- CSS-only filter: each radio button hides the other categories (see "Product filter" in style.css) -->
-          <fieldset class="filters">
-            <legend class="visually-hidden">Show products</legend>
-            <input type="radio" name="product-filter" id="filter-all" checked>
-            <label for="filter-all">All</label>
-            <input type="radio" name="product-filter" id="filter-computers">
-            <label for="filter-computers">Computers</label>
-            <input type="radio" name="product-filter" id="filter-power">
-            <label for="filter-power">Printing &amp; power</label>
-            <input type="radio" name="product-filter" id="filter-network">
-            <label for="filter-network">Networking</label>
-            <input type="radio" name="product-filter" id="filter-software">
-            <label for="filter-software">Software</label>
-          </fieldset>
-
-          <ul class="product-grid">
-            <li class="product cat-computers">
-              <div class="product-image"><img src="images/products/laptop.svg" alt="Business laptop" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>Business Laptop 14"</h3>
-                <p>Intel Core i5, 16 GB memory, 512 GB SSD and Windows 11 Pro. Light enough for the trotro, quick enough for month-end spreadsheets.</p>
-                <p class="price"><span>GHS</span> 9,850</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%20Business%20Laptop%2014%22">Order by email</a>
-              </div>
-            </li>
-            <li class="product cat-computers">
-              <div class="product-image"><img src="images/products/desktop.svg" alt="Office desktop computer with monitor and keyboard" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>Office Desktop Set</h3>
-                <p>Core i5 tower, 24-inch monitor, keyboard and mouse. Set up, updated and on your network the day it arrives.</p>
-                <p class="price"><span>GHS</span> 7,400</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%20Office%20Desktop%20Set">Order by email</a>
-              </div>
-            </li>
-            <li class="product cat-power">
-              <div class="product-image"><img src="images/products/printer.svg" alt="Laser printer" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>Laser Printer</h3>
-                <p>Mono, prints on both sides, Wi-Fi. Thirty pages a minute for invoices, reports and exam papers.</p>
-                <p class="price"><span>GHS</span> 3,600</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%20Laser%20Printer">Order by email</a>
-              </div>
-            </li>
-            <li class="product cat-power">
-              <div class="product-image"><img src="images/products/ups.svg" alt="UPS power backup unit" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>1500VA UPS</h3>
-                <p>Keeps two computers and the router running for about 20 minutes when the lights go off. Saves your work and your hardware.</p>
-                <p class="price"><span>GHS</span> 2,450</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%201500VA%20UPS">Order by email</a>
-              </div>
-            </li>
-            <li class="product cat-network">
-              <div class="product-image"><img src="images/products/router.svg" alt="Wi-Fi 6 router with three antennas" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>Wi-Fi 6 Router</h3>
-                <p>Dual-band coverage for a two-storey office of up to 40 people, with a separate guest network on request.</p>
-                <p class="price"><span>GHS</span> 1,250</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%20Wi-Fi%206%20Router">Order by email</a>
-              </div>
-            </li>
-            <li class="product cat-network">
-              <div class="product-image"><img src="images/products/switch.svg" alt="24-port network switch with cables" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>24-Port Gigabit Switch</h3>
-                <p>Rack-mountable switch for offices and computer labs. One cable to every desk, and no more chains of routers.</p>
-                <p class="price"><span>GHS</span> 2,100</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%2024-Port%20Gigabit%20Switch">Order by email</a>
-              </div>
-            </li>
-            <li class="product cat-network">
-              <div class="product-image"><img src="images/products/cctv.svg" alt="Wall-mounted CCTV camera" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>4-Camera CCTV Kit</h3>
-                <p>Four 1080p night-vision cameras and a 1 TB recorder, set up so you can watch every camera from your phone.</p>
-                <p class="price"><span>GHS</span> 5,900</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%204-Camera%20CCTV%20Kit">Order by email</a>
-              </div>
-            </li>
-            <li class="product cat-software">
-              <div class="product-image"><img src="images/products/antivirus.svg" alt="Security shield with a tick, for antivirus software" width="320" height="240" loading="lazy"></div>
-              <div class="product-body">
-                <h3>Antivirus Business, 5 devices</h3>
-                <p>One year of real-time protection, email scanning and ransomware rollback for five computers or phones, installed by us.</p>
-                <p class="price"><span>GHS</span> 650</p>
-                <a class="btn btn-small" href="mailto:sales@brighttech.com.gh?subject=Order%3A%20Antivirus%20Business">Order by email</a>
-              </div>
-            </li>
-          </ul>
+        <div class="actions">
+          <a class="btn btn-ink" href="tel:+233302901474">Call 030 290 1474</a>
+          <a class="btn btn-line" href="contact.html">Send a message</a>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ 6. CONTACT US ============ -->
-    <section class="section contact-section" id="contact">
-      <div class="wrap contact">
-        <div class="contact-main">
-          <h2 class="section-title">Tell us what's wrong, or what you need.</h2>
-          <p class="section-lead">We reply within one working day. For anything urgent, call the help desk.</p>
-
-          <form class="contact-form" action="thanks.html" method="get">
-            <div class="form-row">
-              <div class="form-field">
-                <label for="name">Full name</label>
-                <input id="name" name="name" type="text" autocomplete="name" required minlength="2" placeholder="Ama Mensah">
-                <p class="field-error">Please tell us your name.</p>
-              </div>
-              <div class="form-field">
-                <label for="email">Email address</label>
-                <input id="email" name="email" type="email" autocomplete="email" required placeholder="ama@example.com">
-                <p class="field-error">Enter an email address like name@example.com.</p>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-field">
-                <label for="phone">Phone number</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" required pattern="[0-9+ ]{10,16}" placeholder="024 123 4567">
-                <p class="field-error">Enter a phone number of at least 10 digits.</p>
-              </div>
-              <div class="form-field">
-                <label for="subject">Subject</label>
-                <input id="subject" name="subject" type="text" list="subject-ideas" required placeholder="Laptop repair">
-                <datalist id="subject-ideas">
-                  <option value="Buying a product"></option>
-                  <option value="Laptop or desktop repair"></option>
-                  <option value="Wi-Fi, cabling or CCTV"></option>
-                  <option value="Support plan"></option>
-                  <option value="Something else"></option>
-                </datalist>
-                <p class="field-error">Give your message a subject.</p>
-              </div>
-            </div>
-            <div class="form-field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" rows="6" required minlength="10" placeholder="What happened, which device, and when is a good time to call you?"></textarea>
-              <p class="field-error">Tell us a little more (at least 10 characters).</p>
-            </div>
-            <button class="btn btn-sun" type="submit">Send message</button>
-          </form>
-        </div>
-
-        <aside class="contact-side" aria-label="Contact details">
-          <div class="contact-card">
-            <h3>Visit or call</h3>
-            <address>
-              BrightTech Solutions Ltd<br>
-              Plot 14, Spintex Road<br>
-              Accra, Ghana
-            </address>
-            <ul class="contact-links">
-              <li><span>Phone</span><a href="tel:+233302901474">+233 30 290 1474</a></li>
-              <li><span>Email</span><a href="mailto:hello@brighttech.com.gh">hello@brighttech.com.gh</a></li>
-              <li><span>Map</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Spintex+Road+Accra+Ghana" target="_blank" rel="noopener">Find us on Google Maps</a></li>
-            </ul>
-
-            <table class="hours">
-              <caption>Opening hours</caption>
-              <tbody>
-                <tr><th scope="row">Monday – Friday</th><td>8:00 – 18:00</td></tr>
-                <tr><th scope="row">Saturday</th><td>9:00 – 15:00</td></tr>
-                <tr><th scope="row">Sunday</th><td>Closed</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <figure class="support-line">
-            <figcaption>Hear our support line</figcaption>
-            <audio controls preload="none" src="media/support-line.mp3">
-              <a href="media/support-line.mp3">Download the support line greeting</a>
-            </audio>
-          </figure>
-
-          <div class="faq">
-            <h3>Quick answers</h3>
-            <details>
-              <summary>Do you repair computers you didn't sell?</summary>
-              <p>Yes. We repair any brand of laptop, desktop or printer, and diagnosis is free if you go ahead with the repair.</p>
-            </details>
-            <details>
-              <summary>How can I pay?</summary>
-              <p>Mobile Money, bank transfer, card or cash at the showroom. Businesses on a support plan can pay monthly by invoice.</p>
-            </details>
-            <details>
-              <summary>Do you work outside Accra?</summary>
-              <p>Our engineers cover Tema, Kasoa and Aburi every week. For larger projects we travel anywhere in Ghana.</p>
-            </details>
-          </div>
-        </aside>
       </div>
     </section>
   </main>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- ============ FOOTER (the same on every page) ============ -->
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div class="footer-brand">
-        <a class="brand" href="#home">
+        <a class="brand" href="index.html">
           <img src="images/logo-light.svg" alt="BrightTech Solutions logo" width="36" height="36">
           <span class="brand-name">BrightTech <span>Solutions</span></span>
         </a>
@@ -485,11 +196,11 @@
       <nav class="footer-nav" aria-label="Footer">
         <h2>Explore</h2>
         <ul>
-          <li><a href="#about">About us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#team">Our team</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="team.html">Our team</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
       <div class="footer-contact">
@@ -503,7 +214,7 @@
     </div>
     <div class="wrap footer-base">
       <p>© 2026 BrightTech Solutions. A fictional company created for a Web Technologies group project at Knutsford University.</p>
-      <p>Designed and built by Kwame Mensah, Ama Owusu, Yaw Boateng and Efua Asante, in HTML and CSS only. <a href="#home">Back to top</a></p>
+      <p>Designed and built by Edze Prince Daniel, Anang Queenstar Atswei, Atta Bansah Defred and Caleb Apemenyor Tawiah, in HTML and CSS only. <a href="#main">Back to top</a></p>
     </div>
   </footer>
 </body>

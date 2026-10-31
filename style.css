@@ -1,22 +1,25 @@
 /* =========================================================
    BrightTech Solutions — style.css
    HTML and CSS only: no JavaScript, no frameworks, no external files.
+   One stylesheet for every page of the site.
    Contents
      1. Fonts and colour tokens
      2. Base elements and browser surfaces
      3. Buttons
      4. Header, navigation and mobile menu
-     5. Home (hero and product shelf)
-     6. About us
-     7. Video
+     5. Page headings and the closing call to action
+     6. Home
+     7. About us
      8. Services, repair steps and support plans table
      9. Our team
     10. Products and the CSS-only filter
-    11. Contact form, details, audio and FAQ
-    12. Footer
-    13. Scroll-driven effects (progressive enhancement)
-    14. Responsive layout
-    15. Motion preferences
+    11. The quote builder
+    12. Contact form, details, audio and FAQ
+    13. Thank-you and not-found pages
+    14. Footer
+    15. Page transitions and scroll effects
+    16. Responsive layout
+    17. Motion preferences
    ========================================================= */
 
 
@@ -37,16 +40,18 @@
 }
 
 :root {
-  /* The brand: one sunny orange, black ink, warm white paper */
-  --sun: #ff5b1a;
-  --sun-light: #ffd2bd;
-  --sun-wash: #fff0e7;
-  --sun-text: #b8400b;          /* orange dark enough for small text on paper */
+  /* The brand: warm white paper and black ink, with orange kept as an accent.
+     Orange only ever fills small things. Large areas use the two soft tints,
+     because a whole screen of strong orange is tiring to look at. */
+  --sun: #f06e1e;
+  --sun-light: #ffdcc6;         /* soft tint: the half-sun, highlighted cards */
+  --sun-wash: #fff1e6;          /* softest tint: bands and product tiles */
+  --sun-text: #b34d0c;          /* orange dark enough for small text on paper */
   --ink: #141110;
-  --ink-muted: #3b1a0a;         /* secondary text on the orange field */
   --paper: #fffaf6;
   --white: #ffffff;
   --muted: #5d5550;
+  --body-text: #3c3531;
   --line: #eadfd7;
   --line-dark: rgba(255, 255, 255, 0.16);
   --error: #b42318;
@@ -115,7 +120,7 @@ a {
 
 ::selection {
   background: var(--ink);
-  color: var(--sun);
+  color: var(--paper);
 }
 
 :focus-visible {
@@ -131,16 +136,11 @@ a {
   padding-inline: var(--gutter);
 }
 
-.field {
-  background: var(--sun);
-}
-
 .section {
   padding-block: var(--section-space);
 }
 
-.section-title,
-.about-story h2 {
+.section-title {
   font-size: clamp(2.2rem, 1.3rem + 3vw, 3.6rem);
   line-height: 1;
   letter-spacing: -0.035em;
@@ -152,10 +152,6 @@ a {
   margin-top: 1.1rem;
   color: var(--muted);
   font-size: clamp(1.05rem, 1rem + 0.25vw, 1.2rem);
-}
-
-.field .section-lead {
-  color: var(--ink-muted);
 }
 
 .visually-hidden {
@@ -207,12 +203,8 @@ a {
   transition: background-color 0.2s, color 0.2s, transform 0.2s var(--ease-out);
 }
 
-.btn:hover {
-  transform: translateY(-2px);
-}
-
 .btn:active {
-  transform: translateY(0) scale(0.98);
+  transform: scale(0.98);
 }
 
 .btn-ink {
@@ -220,28 +212,14 @@ a {
   color: var(--white);
 }
 
-.btn-ink:hover {
-  background: #000;
-}
-
 .btn-line {
   background: transparent;
   color: var(--ink);
 }
 
-.btn-line:hover {
-  background: var(--ink);
-  color: var(--sun);
-}
-
 .btn-sun {
   background: var(--sun);
   color: var(--ink);
-}
-
-.btn-sun:hover {
-  background: var(--ink);
-  color: var(--sun);
 }
 
 .btn-small {
@@ -252,9 +230,26 @@ a {
   color: var(--ink);
 }
 
-.btn-small:hover {
-  background: var(--ink);
-  color: var(--white);
+/* Hover effects only for a real mouse: on a touch screen they stick after a tap */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-ink:hover {
+    background: #000;
+  }
+
+  .btn-line:hover,
+  .btn-small:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .btn-sun:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
 }
 
 
@@ -264,8 +259,9 @@ a {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: var(--sun);
-  border-bottom: 1px solid transparent;
+  background: rgba(255, 250, 246, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
 }
 
 .header-bar {
@@ -309,17 +305,25 @@ a {
   font-size: 0.98rem;
   text-decoration: none;
   /* underline that grows from the left on hover */
-  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  background: linear-gradient(var(--sun), var(--sun)) 0 100% / 0 2.5px no-repeat;
   transition: background-size 0.3s var(--ease-out);
 }
 
-.site-nav a:hover {
-  background-size: 100% 2px;
+/* every page marks its own link with aria-current="page" */
+.site-nav a[aria-current="page"] {
+  color: var(--sun-text);
+  background-size: 100% 2.5px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .site-nav a:hover {
+    background-size: 100% 2.5px;
+  }
 }
 
 /* Mobile menu: a hidden checkbox remembers whether the menu is open.
    The <label> is the visible button; clicking it ticks the checkbox,
-   and ".menu-toggle:checked ~ .site-nav" shows the links (section 14). */
+   and ".menu-toggle:checked ~ .site-nav" shows the links (section 16). */
 .menu-toggle {
   position: absolute;
   opacity: 0;
@@ -333,7 +337,96 @@ a {
 }
 
 
-/* ---------- 5. Home (hero and product shelf) ---------- */
+/* ---------- 5. Page headings and the closing call to action ---------- */
+
+/* Each inner page opens with its title standing on a black horizon,
+   with a half-sun rising behind it: the same picture as the logo. */
+.page-head {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(2.25rem, 5vw, 3.75rem) clamp(2.5rem, 5vw, 3.75rem);
+  border-bottom: 3px solid var(--ink);
+}
+
+.page-head::after {
+  content: "";
+  position: absolute;
+  right: max(var(--gutter), calc((100% - 1320px) / 2 + var(--gutter)));
+  bottom: 0;
+  width: clamp(160px, 26vw, 380px);
+  aspect-ratio: 2 / 1;
+  border-radius: 999px 999px 0 0;
+  background: var(--sun-light);
+}
+
+.page-head .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.page-head h1 {
+  max-width: 15ch;
+  margin-top: 1.1rem;
+  font-size: clamp(2.5rem, 1.3rem + 4.2vw, 4.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.page-head .section-lead {
+  max-width: 50ch;
+}
+
+/* Breadcrumb: an ordered list, because Home comes before the page you are on */
+.crumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.crumbs li + li::before {
+  content: "/";
+  margin-inline: 0.5rem;
+  color: var(--sun-text);
+}
+
+.cta {
+  padding-block: clamp(3rem, 7vw, 5rem);
+  background: var(--sun-wash);
+}
+
+.cta-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: end;
+  gap: 1.75rem clamp(2rem, 5vw, 4.5rem);
+}
+
+.cta h2 {
+  max-width: 16ch;
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.cta p {
+  max-width: 44ch;
+  margin-top: 0.9rem;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+
+/* ---------- 6. Home ---------- */
 
 .hero {
   padding-top: clamp(2.5rem, 6vw, 4.5rem);
@@ -362,14 +455,11 @@ a {
   line-height: 1.5;
 }
 
-.actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-/* The shelf: products standing on a black line, each with a price tag */
+/* The shelf: products standing on a black line, each with a price tag,
+   and a half-sun rising behind them */
 .shelf {
+  position: relative;
+  isolation: isolate;
   display: grid;
   grid-template-columns: 1.3fr 1fr 0.9fr 0.8fr;
   align-items: end;
@@ -378,6 +468,20 @@ a {
   padding: 0;
   list-style: none;
   border-bottom: 3px solid var(--ink);
+}
+
+/* as tall as the shelf, so the sun never rises into the words above it */
+.shelf::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 54%;
+  bottom: 0;
+  height: 100%;
+  aspect-ratio: 2 / 1;
+  border-radius: 999px 999px 0 0;
+  background: var(--sun-light);
+  transform: translateX(-50%);
 }
 
 .shelf-item a {
@@ -404,7 +508,7 @@ a {
   top: 0;
   right: 0;
   padding: 0.4rem 0.65rem;
-  background: var(--paper);
+  background: var(--white);
   border: 2px solid var(--ink);
   border-radius: 9px;
   font-size: 0.82rem;
@@ -421,12 +525,14 @@ a {
   font-variant-numeric: tabular-nums;
 }
 
-.shelf-item a:hover img {
-  transform: translateY(-6px);
-}
+@media (hover: hover) and (pointer: fine) {
+  .shelf-item a:hover img {
+    transform: translateY(-6px);
+  }
 
-.shelf-item a:hover .price-tag {
-  transform: rotate(2deg) translateY(-4px);
+  .shelf-item a:hover .price-tag {
+    transform: rotate(2deg) translateY(-4px);
+  }
 }
 
 /* Black band under the hero with the essentials */
@@ -448,7 +554,7 @@ a {
 
 .info-band span {
   margin-right: 0.4rem;
-  color: var(--sun);
+  color: #ffa66e;
   font-weight: 700;
 }
 
@@ -457,108 +563,51 @@ a {
   text-decoration-color: var(--sun);
 }
 
-.info-band a:hover {
-  color: var(--sun);
-}
-
-
-/* ---------- 6. About us ---------- */
-
-.about {
+/* Four doors from the home page into the Services page */
+.home-links {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: clamp(2.5rem, 7vw, 6rem);
-  align-items: start;
-}
-
-.about-story p {
-  max-width: 60ch;
-  margin-top: 1.25rem;
-  font-size: 1.1rem;
-  color: #3c3531;
-}
-
-.about-history h3 {
-  margin-bottom: 1.25rem;
-  font-size: 1.5rem;
-}
-
-/* The history is an ordered list drawn as a timeline */
-.timeline {
-  margin: 0;
-  padding: 0 0 0 1.75rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
   list-style: none;
-  border-left: 3px solid var(--ink);
 }
 
-.timeline li {
-  position: relative;
-  padding: 0 0 1.4rem;
-  color: #3c3531;
+.home-links a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  background: var(--sun-wash);
+  text-decoration: none;
+  transition: background-color 0.2s;
 }
 
-.timeline li:last-child {
-  padding-bottom: 0;
+.home-links h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+  line-height: 1.15;
 }
 
-.timeline li::before {
-  content: "";
-  position: absolute;
-  top: 0.2rem;
-  left: calc(-1.75rem - 10px);
-  width: 17px;
-  height: 17px;
-  border: 3px solid var(--ink);
-  border-radius: 50%;
-  background: var(--sun);
+.home-links p {
+  color: var(--muted);
+  font-size: 0.98rem;
 }
 
-.timeline .year {
-  display: block;
-  color: var(--ink);
-  font: 800 1.35rem/1.2 var(--font-display);
-  font-variant-numeric: tabular-nums;
+.home-links .more {
+  margin-top: auto;
+  padding-top: 1rem;
+  color: var(--sun-text);
+  font-size: 0.95rem;
+  font-weight: 650;
 }
 
-.mission-vision {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+@media (hover: hover) and (pointer: fine) {
+  .home-links a:hover {
+    background: var(--sun-light);
+  }
 }
-
-.statement {
-  padding: clamp(1.75rem, 4vw, 3rem);
-  border-radius: 24px;
-}
-
-.statement h3 {
-  font-size: 1.15rem;
-  letter-spacing: -0.01em;
-}
-
-.statement p {
-  margin-top: 1rem;
-  font: 600 clamp(1.45rem, 1.1rem + 1.3vw, 2.15rem)/1.15 var(--font-display);
-  letter-spacing: -0.025em;
-}
-
-.statement-ink {
-  background: var(--ink);
-  color: var(--white);
-}
-
-.statement-ink h3 {
-  color: var(--sun);
-}
-
-.statement-sun {
-  background: var(--sun);
-  color: var(--ink);
-}
-
-
-/* ---------- 7. Video ---------- */
 
 .film {
   padding-block: clamp(3.5rem, 8vw, 6rem);
@@ -605,18 +654,145 @@ a {
   outline-color: var(--sun);
 }
 
+/* Four plain facts. In each pair the <dd> holds the number, so the column
+   is reversed to put the number above its label. */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem clamp(1rem, 3vw, 2.5rem);
+  margin: 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+}
+
+.fact dd {
+  margin: 0;
+  font: 800 clamp(2.6rem, 1.8rem + 2.4vw, 4rem)/1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+}
+
+.fact dt {
+  margin-top: 0.5rem;
+  color: var(--muted);
+}
+
+
+/* ---------- 7. About us ---------- */
+
+.about {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: start;
+}
+
+.about-story h2 {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+}
+
+.about-story p {
+  max-width: 60ch;
+  margin-top: 1.25rem;
+  font-size: 1.1rem;
+  color: var(--body-text);
+}
+
+.about-history h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+}
+
+/* The history is an ordered list drawn as a timeline */
+.timeline {
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+  list-style: none;
+  border-left: 3px solid var(--ink);
+}
+
+.timeline li {
+  position: relative;
+  padding: 0 0 1.4rem;
+  color: var(--body-text);
+}
+
+.timeline li:last-child {
+  padding-bottom: 0;
+}
+
+.timeline li::before {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: calc(-1.75rem - 10px);
+  width: 17px;
+  height: 17px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--sun);
+}
+
+.timeline .year {
+  display: block;
+  color: var(--ink);
+  font: 800 1.35rem/1.2 var(--font-display);
+  font-variant-numeric: tabular-nums;
+}
+
+.mission-vision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.statement {
+  padding: clamp(1.75rem, 4vw, 3rem);
+  border-radius: 24px;
+}
+
+.statement h2 {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.statement p {
+  margin-top: 1rem;
+  font: 600 clamp(1.45rem, 1.1rem + 1.3vw, 2.15rem)/1.15 var(--font-display);
+  letter-spacing: -0.025em;
+}
+
+.statement-ink {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.statement-ink h2 {
+  color: #ffa66e;
+}
+
+.statement-soft {
+  background: var(--sun-light);
+  color: var(--ink);
+}
+
 
 /* ---------- 8. Services, repair steps and support plans table ---------- */
 
 .services {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: clamp(2.5rem, 5vw, 3.5rem);
-  border-top: 2px solid var(--ink);
 }
 
 .service {
-  padding: 1.75rem 1.5rem 0 0;
+  padding: 0 1.5rem 0 0;
 }
 
 .service + .service {
@@ -638,7 +814,7 @@ a {
   height: 42px;
 }
 
-.service h3 {
+.service h2 {
   margin: 1rem 0 0.5rem;
   font-size: 1.35rem;
   line-height: 1.15;
@@ -678,8 +854,8 @@ a {
   margin-top: clamp(4rem, 8vw, 6rem);
 }
 
-.repair h3,
-.plans h3 {
+.repair h2,
+.plans h2 {
   font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
 }
 
@@ -800,7 +976,7 @@ a {
 }
 
 .plans-table thead .is-popular {
-  background: var(--sun);
+  background: var(--sun-light);
 }
 
 .plans-table tbody tr:last-child > * {
@@ -822,36 +998,33 @@ a {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: clamp(1rem, 2vw, 1.5rem);
-  margin-top: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 .member {
   padding: 0.75rem 0.75rem 1.6rem;
   border: 2px solid var(--ink);
   border-radius: 22px;
-  background: var(--paper);
+  background: var(--white);
   transition: transform 0.3s var(--ease-out);
-}
-
-.member:hover {
-  transform: translateY(-4px) rotate(-0.6deg);
 }
 
 .member img {
   width: 100%;
   aspect-ratio: 5 / 6;
   object-fit: cover;
+  object-position: 50% 20%;   /* keeps faces in frame when a photo is cropped */
   border-radius: 15px;
   background: var(--sun-light);
 }
 
-.member h3 {
+.member h2 {
   margin: 1.1rem 0.5rem 0;
   font-size: 1.35rem;
+  line-height: 1.12;
 }
 
 .member .role {
-  margin: 0.2rem 0.5rem 0;
+  margin: 0.3rem 0.5rem 0;
   color: var(--sun-text);
   font-weight: 650;
   font-size: 0.95rem;
@@ -863,18 +1036,20 @@ a {
   font-size: 0.95rem;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .member:hover {
+    transform: translateY(-4px) rotate(-0.6deg);
+  }
+}
+
 
 /* ---------- 10. Products and the CSS-only filter ---------- */
-
-.catalogue {
-  margin-top: clamp(2rem, 4vw, 2.75rem);
-}
 
 .filters {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 0 0 1.75rem;
+  margin: 0;
   padding: 0;
   border: 0;
 }
@@ -900,10 +1075,6 @@ a {
   transition: background-color 0.2s, color 0.2s;
 }
 
-.filters label:hover {
-  background: var(--sun-wash);
-}
-
 .filters input:checked + label {
   background: var(--ink);
   color: var(--white);
@@ -914,6 +1085,12 @@ a {
   outline-offset: 3px;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .filters input:not(:checked) + label:hover {
+    background: var(--sun-wash);
+  }
+}
+
 /* Product filter: when a category's radio is checked, :has() lets the
    catalogue hide every product that is not in that category. */
 .catalogue:has(#filter-computers:checked) .product:not(.cat-computers),
@@ -921,6 +1098,11 @@ a {
 .catalogue:has(#filter-network:checked) .product:not(.cat-network),
 .catalogue:has(#filter-software:checked) .product:not(.cat-software) {
   display: none;
+}
+
+.catalogue-hint {
+  margin: 0.9rem 0 1.75rem;
+  color: var(--muted);
 }
 
 .product-grid {
@@ -942,15 +1124,10 @@ a {
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
 }
 
-.product:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 30px -16px rgba(20, 17, 16, 0.35);
-}
-
 .product-image {
   padding: 1rem 1.25rem;
   border-bottom: 2px solid var(--ink);
-  background: var(--sun);
+  background: var(--sun-wash);
 }
 
 .product-image img {
@@ -958,8 +1135,15 @@ a {
   transition: transform 0.4s var(--ease-out);
 }
 
-.product:hover .product-image img {
-  transform: scale(1.04);
+@media (hover: hover) and (pointer: fine) {
+  .product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 30px -16px rgba(20, 17, 16, 0.35);
+  }
+
+  .product:hover .product-image img {
+    transform: scale(1.04);
+  }
 }
 
 .product-body {
@@ -970,7 +1154,7 @@ a {
   padding: 1.2rem 1.25rem 1.4rem;
 }
 
-.product h3 {
+.product h2 {
   font-size: 1.2rem;
   line-height: 1.2;
 }
@@ -994,12 +1178,226 @@ a {
   letter-spacing: 0.04em;
 }
 
-.product .btn-small {
+.product-actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1rem;
   margin-top: 1rem;
 }
 
+.order-link {
+  color: var(--sun-text);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
 
-/* ---------- 11. Contact form, details, audio and FAQ ---------- */
+
+/* ---------- 11. The quote builder ----------
+   Tick products and the total adds itself up, with no JavaScript.
+   Four steps, each one line of idea:
+     1. Each "Add to quote" button is the <label> of a hidden checkbox.
+     2. :has() notices a ticked box and sets a variable to that product's price.
+     3. calc() adds the eight variables together.
+     4. CSS can only print a number through a counter, so counter-reset loads
+        the total into two counters, thousands and the rest, to place the comma.
+   Every product costs at least GHS 1,000, so the comma is always in the right place.
+   :has() still sees a ticked box inside a product the filter has hidden,
+   so filtering the catalogue never changes the total. */
+
+.shop:has(#q-laptop:checked)    { --q-laptop: 9850; }
+.shop:has(#q-desktop:checked)   { --q-desktop: 7400; }
+.shop:has(#q-printer:checked)   { --q-printer: 3600; }
+.shop:has(#q-ups:checked)       { --q-ups: 2450; }
+.shop:has(#q-router:checked)    { --q-router: 1250; }
+.shop:has(#q-switch:checked)    { --q-switch: 2100; }
+.shop:has(#q-cctv:checked)      { --q-cctv: 5900; }
+.shop:has(#q-antivirus:checked) { --q-antivirus: 1150; }
+
+.shop {
+  --total: calc(
+    var(--q-laptop, 0) + var(--q-desktop, 0) + var(--q-printer, 0) + var(--q-ups, 0) +
+    var(--q-router, 0) + var(--q-switch, 0) + var(--q-cctv, 0) + var(--q-antivirus, 0)
+  );
+}
+
+@counter-style three-digits {
+  system: extends decimal;
+  pad: 3 "0";                 /* prints 50 as 050, so 12,050 does not become 12,50 */
+}
+
+.quote-total {
+  counter-reset: thousands round(down, var(--total) / 1000, 1) rest mod(var(--total), 1000);
+  font-variant-numeric: tabular-nums;
+}
+
+.quote-total::after {
+  content: "GHS " counter(thousands) "," counter(rest, three-digits);
+}
+
+/* the checkbox itself is hidden; its label is the button you see */
+.quote-tick {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.quote-add .when-on {
+  display: none;
+}
+
+.quote-tick:checked + .quote-add {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.quote-tick:checked + .quote-add .when-off {
+  display: none;
+}
+
+.quote-tick:checked + .quote-add .when-on {
+  display: inline;
+}
+
+.quote-tick:focus-visible + .quote-add {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+.product:has(.quote-tick:checked) {
+  border-color: var(--sun);
+  box-shadow: 0 0 0 2px var(--sun);
+}
+
+/* The bar and the panel only exist once something is ticked */
+.quote-bar,
+.quote {
+  display: none;
+}
+
+.shop:has(.quote-tick:checked) .quote-bar {
+  display: flex;
+}
+
+.shop:has(.quote-tick:checked) .quote {
+  display: grid;
+}
+
+/* Sticks to the bottom of the screen while you browse the catalogue */
+.quote-bar {
+  position: sticky;
+  bottom: 1rem;
+  z-index: 30;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.25rem;
+  padding: 0.6rem 0.65rem 0.6rem 1.5rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  box-shadow: 0 16px 32px -16px rgba(20, 17, 16, 0.55);
+}
+
+.quote-bar p {
+  font-weight: 600;
+}
+
+.quote-bar .quote-total {
+  margin-left: 0.5rem;
+  color: var(--white);
+  font: 800 1.35rem/1 var(--font-display);
+}
+
+.quote {
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2rem clamp(2rem, 5vw, 4rem);
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 2px solid var(--ink);
+  border-radius: 24px;
+  background: var(--white);
+  scroll-margin-top: 96px;
+}
+
+.quote h2 {
+  font-size: clamp(1.6rem, 1.3rem + 1vw, 2.1rem);
+}
+
+.quote-lines {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-lines li {
+  display: none;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.shop:has(#q-laptop:checked) .line-laptop,
+.shop:has(#q-desktop:checked) .line-desktop,
+.shop:has(#q-printer:checked) .line-printer,
+.shop:has(#q-ups:checked) .line-ups,
+.shop:has(#q-router:checked) .line-router,
+.shop:has(#q-switch:checked) .line-switch,
+.shop:has(#q-cctv:checked) .line-cctv,
+.shop:has(#q-antivirus:checked) .line-antivirus {
+  display: grid;
+}
+
+.quote-lines b {
+  font-variant-numeric: tabular-nums;
+}
+
+.quote-lines label {
+  color: var(--sun-text);
+  font-size: 0.88rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.quote-sum {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-top: 1.1rem;
+  font-weight: 600;
+}
+
+.quote-sum .quote-total {
+  font: 800 clamp(1.8rem, 1.5rem + 1vw, 2.4rem)/1 var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.quote-note {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.quote-form {
+  display: grid;
+  gap: 1.15rem;
+  align-content: start;
+}
+
+.quote-form .btn {
+  justify-self: start;
+}
+
+
+/* ---------- 12. Contact form, details, audio and FAQ ---------- */
 
 .contact {
   display: grid;
@@ -1011,7 +1409,6 @@ a {
 .contact-form {
   display: grid;
   gap: 1.15rem;
-  margin-top: 2.25rem;
 }
 
 .form-row {
@@ -1100,8 +1497,8 @@ a {
   color: var(--white);
 }
 
-.contact-card h3 {
-  color: var(--sun);
+.contact-card h2 {
+  color: #ffa66e;
   font-size: 1.5rem;
 }
 
@@ -1137,10 +1534,6 @@ a {
   overflow-wrap: anywhere;
 }
 
-.contact-links a:hover {
-  color: var(--sun);
-}
-
 .hours {
   width: 100%;
   margin-top: 1.25rem;
@@ -1150,7 +1543,7 @@ a {
 
 .hours caption {
   padding-bottom: 0.5rem;
-  color: var(--sun);
+  color: #ffa66e;
   font: 700 1.1rem/1.2 var(--font-display);
   text-align: left;
 }
@@ -1175,7 +1568,6 @@ a {
 .support-line {
   margin: 0;
   padding: 1.25rem;
-  border: 2px solid var(--ink);
   border-radius: 22px;
   background: var(--sun-wash);
 }
@@ -1189,7 +1581,7 @@ a {
   width: 100%;
 }
 
-.faq h3 {
+.faq h2 {
   margin: 0.5rem 0 0.4rem;
   font-size: 1.3rem;
 }
@@ -1243,7 +1635,54 @@ a {
 }
 
 
-/* ---------- 12. Footer ---------- */
+/* ---------- 13. Thank-you and not-found pages ---------- */
+
+.thanks {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.thanks-inner {
+  max-width: 860px;
+}
+
+.thanks-art {
+  width: 84px;
+  height: 84px;
+  padding: 14px;
+  border-radius: 50%;
+  background: var(--sun);
+}
+
+.thanks h1 {
+  margin-top: 1.75rem;
+  font-size: clamp(2.4rem, 1.4rem + 4vw, 4.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+.thanks-lead {
+  max-width: 48ch;
+  margin-top: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.thanks-next {
+  display: grid;
+  gap: 0.6rem;
+  margin: 2rem 0;
+  padding-left: 1.4rem;
+  font-weight: 600;
+}
+
+.thanks-note {
+  margin-top: 2.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+
+/* ---------- 14. Footer ---------- */
 
 .site-footer {
   padding-block: clamp(3rem, 6vw, 4.5rem) 2rem;
@@ -1289,11 +1728,6 @@ a {
   transition: color 0.2s, text-decoration-color 0.2s;
 }
 
-.site-footer a:hover {
-  color: var(--sun);
-  text-decoration-color: var(--sun);
-}
-
 .footer-base {
   display: flex;
   flex-wrap: wrap;
@@ -1311,65 +1745,38 @@ a {
   text-decoration-color: var(--sun);
 }
 
-
-/* Thank-you page (thanks.html), shown after the contact form is sent */
-
-.thanks {
-  min-height: calc(100vh - 76px);
-  padding-block: clamp(3rem, 8vw, 6rem);
-}
-
-.thanks-inner {
-  max-width: 860px;
-}
-
-.thanks-art {
-  width: 84px;
-  height: 84px;
-  padding: 14px;
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  background: var(--paper);
-}
-
-.thanks h1 {
-  margin-top: 1.75rem;
-  font-size: clamp(2.4rem, 1.4rem + 4vw, 4.4rem);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-}
-
-.thanks-lead {
-  max-width: 48ch;
-  margin-top: 1.25rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-
-.thanks-next {
-  display: grid;
-  gap: 0.6rem;
-  margin: 2rem 0;
-  padding-left: 1.4rem;
-  font-weight: 600;
-}
-
-.thanks-note {
-  margin-top: 2.5rem;
-  color: var(--ink-muted);
-  font-size: 0.9rem;
-}
-
-.thanks-page .site-header {
-  animation: none;
+@media (hover: hover) and (pointer: fine) {
+  .info-band a:hover,
+  .contact-links a:hover,
+  .site-footer a:hover {
+    color: #ffa66e;
+    text-decoration-color: #ffa66e;
+  }
 }
 
 
-/* ---------- 13. Scroll-driven effects (progressive enhancement) ----------
-   Browsers that support scroll-linked animations (Chrome, Edge, Safari 26)
-   get a reading-progress bar and a header that turns from orange to paper
-   once you scroll past the hero. Other browsers simply skip this block. */
+/* ---------- 15. Page transitions and scroll effects ----------
+   All of this is progressive enhancement: a browser that does not know
+   these rules skips them, and the site still works exactly the same. */
 
+/* One CSS rule makes the pages fade into each other when you follow a link.
+   The header has its own name, so it stays still while the page changes. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.18s;
+  }
+}
+
+.site-header {
+  view-transition-name: site-header;
+}
+
+/* Reading progress bar along the top of the screen */
 .scroll-progress {
   display: none;
 }
@@ -1381,7 +1788,8 @@ a {
     inset: 0 0 auto;
     z-index: 60;
     height: 4px;
-    background: var(--ink);
+    background: var(--sun);
+    transform: scaleX(0);       /* stays empty on a page too short to scroll */
     transform-origin: 0 50%;
     animation: grow-progress linear both;
     animation-timeline: scroll(root);
@@ -1391,25 +1799,10 @@ a {
     from { transform: scaleX(0); }
     to { transform: scaleX(1); }
   }
-
-  @media (min-width: 961px) {
-    .site-header {
-      animation: header-to-paper linear both;
-      animation-timeline: scroll(root);
-      animation-range: 55vh 70vh;
-    }
-
-    @keyframes header-to-paper {
-      to {
-        background-color: rgba(255, 250, 246, 0.94);
-        border-bottom-color: var(--line);
-      }
-    }
-  }
 }
 
 
-/* ---------- 14. Responsive layout ---------- */
+/* ---------- 16. Responsive layout ---------- */
 
 @media (max-width: 1180px) {
   .product-grid {
@@ -1418,7 +1811,8 @@ a {
 }
 
 @media (max-width: 1080px) {
-  .services {
+  .services,
+  .home-links {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -1447,13 +1841,31 @@ a {
 }
 
 @media (max-width: 860px) {
-  .product-grid {
+  .product-grid,
+  .facts {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .about,
-  .mission-vision {
+  .mission-vision,
+  .quote,
+  .cta-inner {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Short laptop and projector screens: a smaller headline keeps the shelf on the first screen */
+@media (min-width: 1081px) and (max-height: 820px) {
+  .hero {
+    padding-top: 2.25rem;
+  }
+
+  .hero h1 {
+    font-size: 4.25rem;
+  }
+
+  .shelf {
+    margin-top: 1.5rem;
   }
 }
 
@@ -1548,7 +1960,7 @@ a {
 
   .site-nav a {
     padding: 0.85rem 0;
-    border-top: 1px solid rgba(20, 17, 16, 0.25);
+    border-top: 1px solid var(--line);
     font-size: 1.15rem;
     background: none;
   }
@@ -1594,6 +2006,10 @@ a {
     border-bottom: 0;
   }
 
+  .shelf::before {
+    display: none;
+  }
+
   .shelf-item {
     border-bottom: 3px solid var(--ink);
   }
@@ -1621,14 +2037,25 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .contact-form .btn-sun {
+  .contact-form .btn-sun,
+  .quote-form .btn {
     justify-self: stretch;
+  }
+
+  /* a smaller half-sun, with room left for it under the words */
+  .page-head {
+    padding-bottom: 3.75rem;
+  }
+
+  .page-head::after {
+    width: 112px;
   }
 }
 
 @media (max-width: 560px) {
   .product-grid,
-  .team {
+  .team,
+  .home-links {
     grid-template-columns: 1fr;
   }
 
@@ -1642,10 +2069,24 @@ a {
     max-height: 170px;
     margin-inline: auto;
   }
+
+  .quote-bar {
+    border-radius: 18px;
+    padding: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .quote-bar p {
+    padding-left: 0.5rem;
+  }
+
+  .quote-bar .btn {
+    flex: 1 1 100%;
+  }
 }
 
 
-/* ---------- 15. Motion preferences ----------
+/* ---------- 17. Motion preferences ----------
    Entrance animations only run for visitors who have not asked their
    device to reduce motion. Content is visible without them. */
 
@@ -1671,6 +2112,25 @@ a {
     animation: pop-in 0.5s var(--ease-out) backwards;
   }
 
+  /* Slides up when the first product is added */
+  .quote-bar {
+    animation: pop-in 0.3s var(--ease-out) backwards;
+  }
+
+  /* Cards rise gently as they scroll into view: tied to the scroll position, not to a clock */
+  @supports (animation-timeline: view()) {
+    .home-links li,
+    .fact,
+    .service,
+    .steps li,
+    .statement,
+    .member {
+      animation: rise linear backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+
   @keyframes land {
     from {
       opacity: 0;
@@ -1688,6 +2148,13 @@ a {
     from {
       opacity: 0;
       transform: translateY(14px) scale(0.98);
+    }
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
   }
 }
