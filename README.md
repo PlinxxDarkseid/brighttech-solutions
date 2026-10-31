@@ -1,7 +1,7 @@
 # BrightTech Solutions — company website
 
-A responsive website for **BrightTech Solutions**, a (fictional) Accra company that sells and supports
-computer hardware, software, networking and IT support.
+A responsive, multi-page website for **BrightTech Solutions**, a (fictional) Accra company that sells
+and supports computer hardware, software, networking and IT support.
 
 Built for the Web Technologies practical assignment (Level 300, first semester, Knutsford University)
 using **HTML and CSS only**: no JavaScript, no Bootstrap or other frameworks, and no external
@@ -13,33 +13,44 @@ libraries. Every file the site uses is in this repository.
 
 ---
 
+## Group members
+
+| No. | Name | Index number | Role at BrightTech | Built |
+|---|---|---|---|---|
+| 1 | Edze Prince Daniel | 26104018 | Managing Director | Home page, header and navigation, page transitions, colour scheme and typography |
+| 2 | Anang Queenstar Atswei | 26104029 | Head of Networking & Security | About us and Services pages, history timeline, support plans table, responsive layout |
+| 3 | Atta Bansah Defred | 26104026 | Lead Software Engineer | Our team and Products pages, product filter, quote builder, product drawings |
+| 4 | Caleb Apemenyor Tawiah | 26103238 | Customer Support Manager | Contact page and form, thank-you and not-found pages, video and audio, footer, GitHub Pages |
+
+---
+
 ## Requirements checklist
 
 | # | Requirement | Where it is |
 |---|---|---|
-| 1 | **Home page**: company name and logo, welcome message, navigation menu, relevant image | Header logo and name; hero headline with "Welcome to BrightTech Solutions"; menu links to every section; product drawings on the shelf |
-| 2 | **About us**: history, mission and vision, headings and paragraphs | `#about`: company story, a dated history timeline, mission and vision statements |
-| 3 | **Services**: at least four, as lists/sections/cards, with icons | `#services`: four services with icons and lists, "How a repair works" steps, support plans table |
-| 4 | **Our team**: at least four members with name, position, photograph, biography | `#team`: four members |
-| 5 | **Products**: at least five with name, image, description, price | `#products`: eight products with a CSS-only category filter |
-| 6 | **Contact form**: name, email, phone, subject, message, submit | `#contact`: validated form that opens `thanks.html` |
+| 1 | **Home page**: company name and logo, welcome message, navigation menu, relevant image | `index.html`: logo and name in the header; "Welcome to BrightTech Solutions" beside the headline; a menu linking to all six pages; product drawings on the shelf |
+| 2 | **About us**: history, mission and vision, headings and paragraphs | `about.html`: company story, a dated history timeline, mission and vision statements |
+| 3 | **Services**: at least four, as lists/sections/cards, with icons | `services.html`: four services with icons and lists, "How a repair works" steps, support plans table |
+| 4 | **Our team**: at least four members with name, position, photograph, biography | `team.html`: four members |
+| 5 | **Products**: at least five with name, image, description, price | `products.html`: eight products, with a CSS-only category filter and quote builder |
+| 6 | **Contact form**: name, email, phone, subject, message, submit | `contact.html`: validated form that opens `thanks.html` |
 | 7 | **HTML elements**: at least five of the listed ten | All ten are used (see below) |
-| 8 | **CSS styling**: colour scheme, navigation, layout, buttons, tables, forms, images, spacing, fonts, responsive | `style.css`, organised in 15 numbered sections |
+| 8 | **CSS styling**: colour scheme, navigation, layout, buttons, tables, forms, images, spacing, fonts, responsive | `style.css`, one stylesheet for every page, organised in 17 numbered sections |
 
 ### All ten HTML elements
 
-| Element | Used for |
-|---|---|
-| Ordered list `<ol>` | Company history timeline; "How a repair works" steps |
-| Unordered list `<ul>` | What each service includes; navigation; product grid; footer links |
-| Table `<table>` | Support plans comparison; opening hours |
-| Hyperlinks `<a>` | Navigation, buttons, footer |
-| Images `<img>` | Logo, product drawings, service icons, team photographs |
-| Video `<video>` | "BrightTech in half a minute" film, with English captions (`<track>`) |
-| Audio `<audio>` | Recorded support-line greeting |
-| Email link `mailto:` | Contact details; every product's "Order by email" button pre-fills the subject |
-| Telephone link `tel:` | Header button, contact details, footer |
-| Google Maps link | Showroom address, contact details, footer |
+| Element | Used for | Page |
+|---|---|---|
+| Ordered list `<ol>` | Company history timeline; "How a repair works" steps; breadcrumbs | `about.html`, `services.html` |
+| Unordered list `<ul>` | What each service includes; navigation; product grid; footer links | every page |
+| Table `<table>` | Support plans comparison; opening hours | `services.html`, `contact.html` |
+| Hyperlinks `<a>` | Navigation, buttons, footer | every page |
+| Images `<img>` | Logo, product drawings, service icons, team photographs | every page |
+| Video `<video>` | "BrightTech in half a minute" film, with English captions (`<track>`) | `index.html` |
+| Audio `<audio>` | Recorded support-line greeting | `contact.html` |
+| Email link `mailto:` | Contact details; every product's "Order by email" link pre-fills the subject | `contact.html`, `products.html`, footer |
+| Telephone link `tel:` | Header button, contact details, footer | every page |
+| Google Maps link | Showroom address | `index.html`, `contact.html`, footer |
 
 ---
 
@@ -47,34 +58,51 @@ libraries. Every file the site uses is in this repository.
 
 | Feature | How it works |
 |---|---|
-| Mobile menu | A hidden checkbox and its `<label>` (the menu button). `.menu-toggle:checked ~ .site-nav` shows the links. |
+| Quote builder | Tick products and the total adds itself up. `:has()` turns each ticked checkbox into a price variable, `calc()` adds them, and a CSS `counter()` prints the answer. Section 11 of `style.css` explains it line by line. |
 | Product filter | Radio buttons, and `:has()` hides products outside the chosen category. Products animate back in when they reappear. |
+| Page transitions | `@view-transition` fades one page into the next while the header stays still. Browsers without it simply open the next page. |
+| Current page in the menu | Each page marks its own link with `aria-current="page"`, and CSS underlines it. |
+| Mobile menu | A hidden checkbox and its `<label>` (the menu button). `.menu-toggle:checked ~ .site-nav` shows the links. |
 | Form validation | `required`, `type="email"`, `pattern` and `minlength` in HTML, and `:user-invalid` in CSS shows each error only after the visitor has typed. |
 | FAQ accordion | Native `<details>` and `<summary>`, with a plus sign drawn in CSS. |
 | Subject suggestions | `<datalist>` suggests subjects while still allowing free text. |
-| Smooth scrolling | `scroll-behavior: smooth`, with `scroll-padding-top` so headings are not hidden under the sticky header. |
-| Reading progress bar and header colour change | Scroll-driven animations (`animation-timeline: scroll()`), only where the browser supports them. |
+| Scroll effects | A reading progress bar (`animation-timeline: scroll()`) and cards that rise into view (`animation-timeline: view()`), only where the browser supports them. |
 | Animations | Products land on the shelf and price tags swing in on load, all switched off for visitors who prefer reduced motion. |
+
+## Design
+
+Warm white pages and black ink, with orange kept as an accent. Our first version covered the whole
+screen in bright orange, which tired the eyes, so large areas now use two very soft tints and strong
+orange only fills small things: icons, dots and the sun in the logo. The half-sun on the horizon from
+the logo returns behind each page title.
 
 ## Accessibility and quality
 
 - Semantic structure: `header`, `nav`, `main`, `section`, `article`, `aside`, `address`, `figure`, `footer`.
+- One `h1` on every page, with headings in order.
 - Every form field has a `<label>`; every image has `alt` text (decorative icons use `alt=""`).
 - Skip link, visible keyboard focus everywhere, colour contrast checked for projectors.
-- Validates with no errors in the W3C HTML checker.
-- Tested at desktop (1440px), tablet and phone (390px) widths with no sideways scrolling.
+- Every page passes the W3C HTML checker with no errors.
+- Tested at eight widths from 1920px to 360px with no sideways scrolling, and with no files loaded from
+  outside this repository.
 
 ---
 
 ## Folder structure
 
 ```
-index.html          the whole site (six sections)
-thanks.html         page shown after the contact form is sent
-style.css           all styling
+index.html          home page
+about.html          about us
+services.html       services, repair steps, support plans
+team.html           our team
+products.html       products, filter, quote builder
+contact.html        contact form, details, audio, FAQ
+thanks.html         page shown after a form is sent
+404.html            page shown by GitHub Pages for a wrong address
+style.css           all styling, for every page
 favicon.svg         browser tab icon
 fonts/              Funnel Display and Funnel Sans (SIL Open Font License, see fonts/OFL.txt)
-images/             logo, product drawings, service icons, team photographs
+images/             logo, product drawings, service icons, team photographs, link preview
 media/              brand film (MP4), its captions (VTT) and poster, support-line audio (MP3)
 docs/               screenshots for this README
 ```
@@ -82,17 +110,8 @@ docs/               screenshots for this README
 ## Viewing it
 
 - **Online:** open the live site link above (GitHub Pages).
-- **On your computer:** open `index.html` in a browser. Everything works except the video captions,
-  which browsers only load from a web server, so use the live site to see those.
-
-## Team
-
-| Member | Role on the site | Built |
-|---|---|---|
-| Kwame Mensah | Managing Director | Home page, header and navigation, mobile menu, colour scheme and typography |
-| Ama Owusu | Head of Networking & Security | About us and Services, history timeline, support plans table |
-| Yaw Boateng | Lead Software Engineer | Our team and Products, product filter, product drawings |
-| Efua Asante | Customer Support Manager | Contact form and validation, thank-you page, video and audio, footer, GitHub Pages |
+- **On your computer:** open `index.html` in a browser. Everything works except the film captions and
+  the fade between pages, which browsers only allow from a web server, so use the live site to see those.
 
 ## Credits
 
@@ -100,4 +119,4 @@ docs/               screenshots for this README
 - Brand film: animated in HTML and CSS, rendered to MP4; voice-over and support-line greeting
   recorded with a neural text-to-speech voice.
 - Fonts: Funnel Display and Funnel Sans, © The Funnel Project Authors, SIL Open Font License 1.1.
-- BrightTech Solutions, its staff, prices and address are fictional, created for this assignment.
+- BrightTech Solutions, its prices and address are fictional, created for this assignment.
