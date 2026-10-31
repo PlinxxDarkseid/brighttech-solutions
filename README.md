@@ -5,7 +5,7 @@ and supports computer hardware, software, networking and IT support.
 
 Built for the Web Technologies practical assignment (Level 300, first semester, Knutsford University)
 using **HTML and CSS only**: no JavaScript, no Bootstrap or other frameworks, and no external
-libraries. Every file the site uses is in this repository.
+libraries. Every file the site uses is in this repository; the one outside item is the embedded Google Map on the Contact page.
 
 **Live site:** https://plinxxdarkseid.github.io/brighttech-solutions/
 
@@ -47,10 +47,10 @@ libraries. Every file the site uses is in this repository.
 | Hyperlinks `<a>` | Navigation, buttons, footer | every page |
 | Images `<img>` | Logo, product drawings, service icons, team photographs | every page |
 | Video `<video>` | "BrightTech in half a minute" film, with English captions (`<track>`) | `index.html` |
-| Audio `<audio>` | Recorded support-line greeting | `contact.html` |
+| Audio `<audio>` | Spoken help desk message with hours, location and number | `contact.html` |
 | Email link `mailto:` | Contact details; every product's "Order by email" link pre-fills the subject | `contact.html`, `products.html`, footer |
 | Telephone link `tel:` | Header button, contact details, footer | every page |
-| Google Maps link | Showroom address | `index.html`, `contact.html`, footer |
+| Google Maps link | Showroom address, plus an embedded map (`<iframe>`) | `index.html`, `contact.html`, footer |
 
 ---
 
@@ -83,7 +83,7 @@ the logo returns behind each page title.
 - Every form field has a `<label>`; every image has `alt` text (decorative icons use `alt=""`).
 - Skip link, visible keyboard focus everywhere, colour contrast checked for projectors.
 - Every page passes the W3C HTML checker with no errors.
-- Tested at eight widths from 1920px to 360px with no sideways scrolling, and with no files loaded from
+- Tested at eight widths from 1920px to 360px with no sideways scrolling, and with nothing but the map loaded from
   outside this repository.
 
 ---
@@ -103,7 +103,7 @@ style.css           all styling, for every page
 favicon.svg         browser tab icon
 fonts/              Funnel Display and Funnel Sans (SIL Open Font License, see fonts/OFL.txt)
 images/             logo, product drawings, service icons, team photographs, link preview
-media/              brand film (MP4), its captions (VTT) and poster, support-line audio (MP3)
+media/              brand film (MP4), its captions (VTT) and poster, help desk message (MP3)
 docs/               screenshots for this README
 ```
 
@@ -116,7 +116,7 @@ docs/               screenshots for this README
 ## Credits
 
 - Illustrations, icons and logo: original SVG drawings made for this site.
-- Brand film: animated in HTML and CSS, rendered to MP4; voice-over and support-line greeting
-  recorded with a neural text-to-speech voice.
+- Brand film: animated in HTML and CSS, rendered to MP4; voice-over and help desk message
+  recorded with neural text-to-speech voices.
 - Fonts: Funnel Display and Funnel Sans, © The Funnel Project Authors, SIL Open Font License 1.1.
 - BrightTech Solutions, its prices and address are fictional, created for this assignment.
