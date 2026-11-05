@@ -40,6 +40,7 @@
 :root {
   /* Paper and ink, with orange as an accent. Large areas use the soft tints. */
   --sun: #f06e1e;
+  /* --sun: #ADF802; */
   --sun-light: #ffdcc6;         /* soft tint: the half-sun, highlighted cards */
   --sun-wash: #fff1e6;          /* softest tint: bands and product tiles */
   --sun-text: #b34d0c;          /* orange dark enough for small text on paper */
