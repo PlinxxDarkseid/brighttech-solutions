@@ -17,10 +17,10 @@ libraries. Every file the site uses is in this repository; the one outside item 
 
 | No. | Name | Index number | Role at BrightTech | Built |
 |---|---|---|---|---|
-| 1 | Edze Prince Daniel | 26104018 | Managing Director | Home page, header and navigation, page transitions, colour scheme and typography |
-| 2 | Anang Queenstar Atswei | 26104029 | Head of Networking & Security | About us and Services pages, history timeline, support plans table, responsive layout |
-| 3 | Atta Bansah Defred | 26104026 | Lead Software Engineer | Our team and Products pages, product filter, quote builder, product drawings |
-| 4 | Caleb Apemenyor Tawiah | 26103238 | Customer Support Manager | Contact page and form, thank-you and not-found pages, video and audio, footer, GitHub Pages |
+| 1 | Edze Prince Daniel | 26104018 | Head of Networking & Security | Home page, header and navigation, page transitions, colour scheme and typography |
+| 2 | Anang Queenstar Atswei | 26104029 | Managing Director | About us and Services pages, history timeline, support plans table, responsive layout |
+| 3 | Atta Bansah Defred | 26104026 | Customer Support Manager | Our team and Products pages, product filter, quote builder, product drawings |
+| 4 | Caleb Apemenyor Tawiah | 26103238 | Lead Software Engineer | Contact page and form, thank-you and not-found pages, video and audio, footer, GitHub Pages |
 
 ---
 
